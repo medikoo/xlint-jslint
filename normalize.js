@@ -5,7 +5,11 @@ var compact    = require('es5-ext/lib/Array/prototype/compact')
   , resolve    = require('path').resolve
   , vm         = require('vm')
 
-  , reduce = Array.prototype.reduce;
+  , reduce = Array.prototype.reduce, compare;
+
+compare = function (a, b) {
+	return (a.line - b.line) || (a.character - b.character);
+};
 
 module.exports = function (path) {
 	var ctx = vm.createContext({}), linter, result;
@@ -30,7 +34,7 @@ module.exports = function (path) {
 				}, raw.raw);
 				return error;
 			})
-		);
+		).sort(compare);
 	};
 	result.xlintId = 'jslint';
 	return result;
