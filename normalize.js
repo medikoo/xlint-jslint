@@ -1,6 +1,6 @@
 'use strict';
 
-var compact    = require('es5-ext/lib/Array/prototype/compact')
+var compact    = require('es5-ext/array/#/compact')
   , readFile   = require('fs').readFileSync
   , resolve    = require('path').resolve
   , vm         = require('vm')
